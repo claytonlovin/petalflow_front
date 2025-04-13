@@ -1,0 +1,30 @@
+<div class="dialog-container">
+  <h2 mat-dialog-title>Criar Novo Produto</h2>
+  <mat-dialog-content class="dialog-content">
+    <mat-form-field appearance="outline">
+      <mat-label>Nome do Produto</mat-label>
+      <input matInput [(ngModel)]="name" required>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Base URL Local</mat-label>
+      <input matInput [(ngModel)]="baseUrlLocal">
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Base URL Produção</mat-label>
+      <input matInput [(ngModel)]="baseUrlProd">
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Repositório</mat-label>
+      <input matInput [(ngModel)]="repository">
+    </mat-form-field>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end">
+    <button class="cancel-button" mat-button (click)="closeDialog()">Cancelar</button>
+    <button class="create-button" mat-raised-button color="primary" (click)="createProduct()">Criar</button>
+  </mat-dialog-actions>
+  
+</div>

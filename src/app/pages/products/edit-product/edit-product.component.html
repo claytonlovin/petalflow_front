@@ -1,0 +1,39 @@
+
+
+<mat-tab-group>
+    <mat-tab label="Editar Produto">
+
+        <div class="tab-content">
+            <form [formGroup]="form" class="edit-product-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>Nome do Produto</mat-label>
+                    <input matInput formControlName="name" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Base URL Local</mat-label>
+                    <input matInput formControlName="baseUrlLocal" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Base URL Produção</mat-label>
+                    <input matInput formControlName="baseUrlProd" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Repositório</mat-label>
+                    <input matInput formControlName="repository" />
+                </mat-form-field>
+                
+                <button class="case-button" (click)="save()">Salvar Alterações</button>
+            </form>
+        </div>
+    </mat-tab>
+
+    <mat-tab label="Feature">
+        <div class="tab-content">
+            <app-feature-list [productId]="id_product"></app-feature-list>
+
+        </div>
+    </mat-tab>
+</mat-tab-group>

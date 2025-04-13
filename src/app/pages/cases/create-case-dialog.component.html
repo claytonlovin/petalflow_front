@@ -1,0 +1,69 @@
+<div class="create-case-container">
+  <h2 class="dialog-title">🧪 Criar Novo Caso de Teste</h2>
+
+  <mat-dialog-content class="dialog-content">
+      <div class="row">
+          <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Feature</mat-label>
+              <mat-select [(ngModel)]="selectedFeatureId">
+                  <mat-option *ngFor="let feature of features" [value]="feature.id_feature">
+                      {{ feature.name_feature }}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+
+      </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Função</mat-label>
+        <mat-select [(ngModel)]="functionType">
+          <mat-option value="CREATE">CREATE</mat-option>
+          <mat-option value="READ">READ</mat-option>
+          <mat-option value="UPDATE">UPDATE</mat-option>
+          <mat-option value="DELETE">DELETE</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Criticidade</mat-label>
+        <mat-select [(ngModel)]="criticality">
+          <mat-option value="LOW">Baixa</mat-option>
+          <mat-option value="AVERAGE">Média</mat-option>
+          <mat-option value="HIGH">Alta</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Resultado</mat-label>
+        <mat-select [(ngModel)]="result">
+          <mat-option value="PASS">✅ PASS</mat-option>
+          <mat-option value="FAIL">❌ FAIL</mat-option>
+          <mat-option value="NOT_EXECUTED">🕒 NÃO EXECUTADO</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+    
+    <div>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Ação (Gherkin)</mat-label>
+        <textarea matInput [(ngModel)]="action" rows="3" placeholder="Ex: `Given` estou logado..."></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Comportamento esperado</mat-label>
+        <textarea matInput [(ngModel)]="behavior" rows="3" placeholder="Ex: O sistema exibe o dashboard."></textarea>
+      </mat-form-field>
+    </div>
+    
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end" class="dialog-actions">
+    <button class="case-button-cancel" (click)="cancel()">Cancelar</button>
+    <button class="case-button" (click)="createCase()">
+      {{ caseToEdit ? 'Salvar' : 'Criar' }}
+    </button>
+  </mat-dialog-actions>
+</div>

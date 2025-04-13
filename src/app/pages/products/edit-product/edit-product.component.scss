@@ -1,0 +1,29 @@
+mat-tab-group {
+  margin-top: 15px;
+  background-color: var(--background-color);
+  
+}
+
+.tab-content {
+  padding: 20px;
+
+}
+
+mat.tabs-overrides{
+  color: var(--text-color) !important;
+}
+mat-label, input, .mat-mdc-input-element{
+  color: var(--text-color);
+}
+
+.edit-product-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.edit-product-form mat-form-field {
+  width: 50%;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,35 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+// Define paletas
+$light-primary: mat-theming.define-palette(mat.$indigo-palette);
+$light-accent: mat-theming.define-palette(mat.$pink-palette);
+$light-warn: mat-theming.define-palette(mat.$red-palette);
+
+// Define o tema claro
+$light-theme: mat-theming.define-light-theme((
+  color: (
+    primary: $light-primary,
+    accent: $light-accent,
+    warn: $light-warn,
+  )
+));
+
+// Aplica o tema
+@include mat.all-component-themes($light-theme);
+
+// (Opcional) Tema escuro se quiser usar mais tarde
+/*
+$dark-theme: mat-theming.define-dark-theme((
+  color: (
+    primary: $light-primary,
+    accent: $light-accent,
+    warn: $light-warn,
+  )
+));
+
+.dark-theme {
+  @include mat.all-component-colors($dark-theme);
+}
+*/

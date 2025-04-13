@@ -1,0 +1,138 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffffff, #cfdef3, #ffffff);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem;
+  border-radius: 18px;
+  background-color: #ffffff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.login-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.logo {
+  width: 90px;
+  height: auto;
+}
+
+.title-login {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+  color: #66666694;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  padding: 0.75rem;
+  height: 52px;
+  font-size: 1rem;
+  background-color: #073b4c !important;
+  color:  #fff !important;
+}
+mat-icon {
+  font-size: 1.2rem;
+  color: #fff !important;
+}
+.error-message {
+  color: #d32f2f;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+
+  a {
+    color: #073b4c;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      color: #035b77;
+      text-decoration: underline;
+    }
+  }
+
+  .divider-dot {
+    color: #999;
+    font-size: 1rem;
+  }
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+// REGISTER PAGE
+
+.back-login {
+  color: #073b4c;
+  text-align: center;
+  display: block;
+  margin-top: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #035b77;
+    text-decoration: underline;
+  }
+}

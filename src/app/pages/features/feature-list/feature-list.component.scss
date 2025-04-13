@@ -1,0 +1,67 @@
+.feature-head{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 70%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.mat-mdc-table {
+  background: var(--background-color);
+  transition: background 0.3s ease-in-out;
+  border: 1px solid var(--border-table);
+  border-radius: 5px;
+}
+.mat-mdc-table th, td, mat-icon {
+  text-align: center;
+  color: var(--text-color);
+}
+.features-container {
+  width: 70%;
+  max-width: 900px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-mdc-header-cell{
+  background-color: var(--table-header) !important;
+  color: #fff !important;
+}
+.mat-mdc-header-cell, .mat-mdc-cell {
+  text-align: center;
+}
+
+.mat-mdc-footer-cell{
+  background-color: var(--background-color) !important;
+
+}
+
+.mat-mdc-row, .mat-mdc-header-row, .mat-mdc-footer-row {
+  height: 20px !important;
+}
+.mat-mdc-cell, .mat-mdc-header-cell {
+  padding: 3px 8px !important;
+  font-size: 14px;
+  border-bottom: 1px solid var(--table-border);
+}
+
+.mat-mdc-paginator {
+  background-color: var(--background-color) !important;
+  border-radius: 0 0 10px 10px;
+  padding: 5px !important;
+  color: var(--text-color) !important;
+}
+
+.mat-mdc-paginator-container {
+  min-height: 30px !important;
+  font-size: 12px !important;
+}
+
+.mat-mdc-paginator-icon {
+  font-size: 16px !important;
+}

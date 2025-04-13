@@ -1,0 +1,7 @@
+
+services:
+  angular-app:
+    build: .
+    ports:
+      - "3001:4200"
+    restart: always

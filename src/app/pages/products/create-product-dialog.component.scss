@@ -1,0 +1,35 @@
+.dialog-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.dialog-content{
+    display: flex;
+    flex-direction: column;
+  
+}
+
+.custom-dialog .mat-dialog-container {
+    width: 100% !important;
+    max-width: 800px !important;
+  }
+
+
+  .cancel-button{
+    background-color: rgb(195, 82, 82) !important;
+    color: #fff !important;
+    padding: 10px 20px;
+  }
+
+  .create-button{
+    background-color: #333 !important;
+    color: #fff !important;
+    padding: 20px 40px;
+  }
+
+.mat-mdc-dialog-surface{
+  max-width: 800px !important;
+  border-radius: 2px !important;
+}
+  

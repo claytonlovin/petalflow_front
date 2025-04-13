@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>{{ isEditing ? 'Edit Feature' : 'Create New Feature' }}</h2>
+<mat-dialog-content [formGroup]="form" class="feature-form-content">
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Feature Name</mat-label>
+        <input matInput formControlName="name_feature" placeholder="Enter the resource name" />
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end" class="feature-form-actions">
+    <button class="case-button-cancel" (click)="onCancel()">Cancelar</button>
+    <button class="case-button" (click)="onSubmit()">
+        {{ isEditing ? 'Salvar' : 'Criar' }}
+    </button>
+</mat-dialog-actions>

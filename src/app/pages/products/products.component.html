@@ -1,0 +1,21 @@
+<div class="product-grid">
+  <mat-card class="product-card" *ngFor="let product of products" (click)="goToCases(product.id)">
+    <mat-card-content class="product-content">
+      <div>
+        <p>Produto:</p>
+        <h3>{{ product.name }}</h3>
+      </div>
+      <div class="action-buttons">
+        <button mat-icon-button color="primary" (click)="editProduct(product.id); $event.stopPropagation()">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="viewProduct(product.id); $event.stopPropagation()">
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="executeProduct(product.id); $event.stopPropagation()">
+          <mat-icon>play_arrow</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

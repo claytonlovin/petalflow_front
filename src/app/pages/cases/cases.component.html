@@ -1,0 +1,69 @@
+<div class="cases-container">
+  <div class="cases-header">
+    <h4>Project: {{ cases[0]?.product.name }}</h4>
+
+    <button mat-raised-button class="case-button" (click)="openCreateCaseDialog()">
+      Create new case
+    </button>
+  </div>
+
+  <mat-accordion>
+      <mat-expansion-panel *ngFor="let caseItem of pagedCases">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ caseItem.feature.name_feature }}
+        </mat-panel-title>
+          <mat-panel-description>Criticality
+              <span [ngClass]="{
+                'high-criticality': caseItem.criticality === 'HIGH',
+                'average-criticality': caseItem.criticality === 'AVERAGE',
+                'low-criticality': caseItem.criticality === 'LOW'
+              }">
+                : {{ caseItem.criticality }}
+              </span>
+          </mat-panel-description>
+
+          <mat-panel-description>
+          <span class="case-status" [ngClass]="caseItem.result.toLowerCase()">
+            {{ caseItem.result }}
+          </span>
+        </mat-panel-description>
+        
+      </mat-expansion-panel-header>
+
+      <div class="case-details">
+        <div class="case-info">
+          <div>
+            <p><strong>Behavior:</strong> {{ caseItem.behavior }}</p>
+            <p><strong>Date execution:</strong>
+              {{ caseItem.dataExec | date: 'dd/MM/yyyy HH:mm' }}</p>
+          </div>
+           <!-- Adicionar botões de ação aqui -->
+           <div class="action-buttons">
+            <button mat-icon-button color="primary" (click)="editCase(caseItem)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="accent">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="runTestCase(caseItem)">
+              <mat-icon>play_arrow</mat-icon>
+            </button>
+          </div>
+        </div>
+        
+        <p class="log-placeholder" [innerHTML]="caseItem.action | gherkin"></p>
+      </div>
+    </mat-expansion-panel>
+    
+  </mat-accordion>
+
+    <mat-paginator
+            [length]="cases.length"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="[5, 10, 20]"
+            (page)="handlePageEvent($event)">
+    </mat-paginator>
+
+
+</div>

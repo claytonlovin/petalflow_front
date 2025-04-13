@@ -1,0 +1,47 @@
+<div class="container">
+
+  <div class="header">
+    <mat-card-title class="title">List projects</mat-card-title>
+
+    <button  (click)="openCreateDialog()" class="case-button" >
+      Create New Project
+    </button> 
+  </div>
+  <div class="product-grid">
+
+    <mat-card class="product-card"  [ngClass]="{
+      'pass': statusMap[product.id] === 'PASS',
+      'fail': statusMap[product.id] === 'FAIL',
+      'not_executed': statusMap[product.id] == 'NOT_EXECUTED'
+    }" 
+    *ngFor="let product of products"
+    >
+      <mat-card-content class="product-content">
+        <div>
+          <p>Project</p>
+          <h3>{{ product.name }}</h3>
+        </div>
+        <div class="action-buttons">
+            <button mat-icon-button color="primary">
+                <mat-icon>dashboard</mat-icon>
+            </button>
+          <button mat-icon-button color="primary" (click)="router.navigate(['/products/edit', product.id])">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="accent"(click)="goToCases(product.id)">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="executeProduct(product.id)">
+            <mat-icon>play_arrow</mat-icon>
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
+
+    <p *ngIf="products.length === 0" class="empty-message">Nenhum produto encontrado.</p>
+  
+</div>
+
+
