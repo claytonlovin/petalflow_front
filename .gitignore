@@ -1,0 +1,17 @@
+# Angular / Node
+node_modules/
+dist/
+tmp/
+out-tsc/
+.env
+.env.local
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Sistema
+.DS_Store
+Thumbs.db
