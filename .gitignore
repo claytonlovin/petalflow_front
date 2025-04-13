@@ -1,5 +1,16 @@
 # Angular / Node
 node_modules/
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+ler
+na-debug.log*
+# Compiled output
+.angular/
+angular-*
+angular/
+
 dist/
 tmp/
 out-tsc/
