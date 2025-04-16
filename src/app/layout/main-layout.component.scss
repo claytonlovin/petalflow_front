@@ -1,52 +1,86 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    height: 60px;
-    transition: background 0.3s ease-in-out;
-    background-color: var(--navbar-color);
-    border-bottom: 1px solid var(--primary-color);
-    color: var(--navbar-text-color);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  height: 60px;
+  background-color: var(--navbar-color);
+  border-bottom: 1px solid var(--primary-color);
+  color: var(--navbar-text-color);
 
-    .menu {
-      display: flex;
-      gap: 15px;
-      
-    } 
-
-    .spacer {
-      flex-grow: 1;
-    }
+  .logo-img {
+    height: 40px;
+    margin-right: 10px;
   }
-.logo-img {
-  height: 40px;
-  margin-right: 10px;
+  .menu button{
+    color: var(--navbar-text-color) !important;
+    }
+    .logout{
+      color: var(--navbar-text-color) !important;
+    }
+  .menu {
+    display: flex;
+    gap: 15px;
+    color: var(--navbar-text-color);
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mobile-toggle {
+    display: none;
+    color: var(--navbar-text-color);
+    margin-left: auto;
+  }
+
+  .spacer {
+    flex-grow: 1;
+  }
 }
 
- .menu button{
-  color: var(--navbar-text-color) !important;
-  }
-  .logout{
-    color: var(--navbar-text-color) !important;
+.mobile-menu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  flex-direction: column;
+  padding: 10px 20px;
+  background-color: var(--navbar-color);
+  border-bottom: 1px solid var(--primary-color);
+  pointer-events: none;
+
+  button {
+    color: var(--navbar-text-color);
+    text-align: left;
+    margin-bottom: 5px;
   }
 
-  .container {
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-toggle {
+    display: inline-flex !important;
+  }
+
+  .mobile-menu {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding-top: 30px;
   }
-  .title{
-    font-size: 17px !important;
-    font-style: normal !important;
-    font-weight: 400 !important;
+  .mobile-toggle mat-icon {
+    color: var(--navbar-text-color) !important;
+    fill: var(--navbar-text-color) !important;
   }
-  .header {
-    display: flex;
-    justify-content: space-between;
-    width: 70%;
-    max-width: 900px;
-    margin-bottom: 15px;
-  }
+}

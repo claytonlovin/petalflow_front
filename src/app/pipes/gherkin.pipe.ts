@@ -8,11 +8,9 @@ export class GherkinPipe implements PipeTransform {
   transform(value: string): string {
     if (!value) return '';
 
-    // Substitui `texto` por <code>texto</code>
     let formatted = value.replace(/`([^`]+)`/g, '<code>$1</code>');
 
-    // Quebra linha após cada `Then`, `And`, etc. (separar visualmente)
-    formatted = formatted.replace(/(Scenario|Then|Given|When|And|But)/g, '<br><strong>$1</strong>');
+    formatted = formatted.replace(/(Scenario|Cenário:|Cenário|Then|Então|Given|Dado|When|Quando|And|E|But|Mas) /g, '<br><strong>$1</strong> ');
 
     return formatted;
   }
