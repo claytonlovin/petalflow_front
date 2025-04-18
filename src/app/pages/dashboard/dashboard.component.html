@@ -7,7 +7,7 @@
       Create New Project
     </button> 
   </div>
-  <div class="product-grid">
+  
 
     <mat-card class="product-card"  [ngClass]="{
       'pass': statusMap[product.id] === 'PASS',
@@ -37,7 +37,7 @@
         </div>
       </mat-card-content>
     </mat-card>
-  </div>
+  
   
 
     <p *ngIf="products.length === 0" class="empty-message">Nenhum produto encontrado.</p>

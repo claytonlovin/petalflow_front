@@ -7,8 +7,8 @@ html {
   @include mat.theme((
     color: (
       theme-type: light,
-      primary: mat.$green-palette,
-      tertiary: mat.$green-palette,
+      primary: mat.$blue-palette,
+      tertiary: mat.$blue-palette,
     ),
     typography: Roboto,
     density: 0,
@@ -31,32 +31,46 @@ html {
   background: transparent !important;
 }
 
-
+.mat-drawer {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
 /* DEFINICAO DE DARKMODE GERAL */
 :root {
-  --primary-color: rgba(243, 243, 243, 0.99);
+  --primary-color: #f4f7fa !important;
   --accent-color: #e91e63;
   --warn-color: #f44336;
   --success-color: #2a8e00;
   --bg-color: #ffffff;
+  --bgd-color: #ffffff;
   --text-color: #414141ec;
+  --text-color-light: #fafafaec;
   --box-shadow: 0 2px 4px rgba(223, 47, 47, 0.623);
   --border-case: none;
   --color-icon: #333333b6;
-  --table-border: #ccc;
-  --table-header: #2a8e00;
+  --table-border: #aaaaaa5c;
+  --table-header: #118ab2;
   --border-table: #ccc;
   --navbar-color: #073b4c;
-  --navbar-text-color: #fff;
+  --navbar-text-color: #2a2a2a;
+  --sidebar-color: #f5f5f5;
+  --sidebar-bg-color: #118ab2;
+  --sidebar-text-color: #ffffff;
 }
-
+.mdc-list-item__primary-text {
+  color: #fff !important;
+}
 .dark-theme {
-  --primary-color: #e2f2ff34;
+  --primary-color: #e2f2ff34 !important;
   --accent-color: #f48fb1;
   --warn-color: #ef9a9a;
   --success-color: #2a8e00;
   --bg-color: #2e2e2e;
-  --text-color: #ffffff;
+  --bgd-color: #2e2e2e;
+  --text-color: #bbbbbb;
+  --text-color-light: #272727;
   --box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
   --border-case: #e2f2ff34;
   --color-icon: #929292c0;
@@ -65,11 +79,15 @@ html {
   --border-table: #ccc;
   --navbar-color: #333;
   --navbar-text-color: #fff;
+  --sidebar-text-color: #ffffff;
+  --sidebar-color: #2e2e2e;
+  --sidebar-bg-color: #2e2e2e;
 }
 /* FIM */ 
 
-html, body { height: 100%; overflow-x: hidden; }
-body { 
+html, body { 
+  height: 100%; 
+  overflow-x: hidden; 
   margin: 0; 
   font-family: Roboto, 
   "Helvetica Neue", 
@@ -77,13 +95,8 @@ body {
 }
 
 .dark-toggle mat-icon {
-  color: #ffffff !important;
+  color:var(--text-color) !important;
 }
-
-body.dark-theme .dark-toggle mat-icon {
-  color: #fff; 
-}
-
 .success-snackbar {
   background-color: #4CAF50 !important;
   color: white !important;
@@ -124,7 +137,6 @@ body.dark-theme .dark-toggle mat-icon {
   cursor: pointer;
 }
 body {
-  background-color: var(--bg-color);
   color: var(--text-color);
 }
 

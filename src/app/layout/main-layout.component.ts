@@ -21,47 +21,88 @@ import { AuthService } from '../services/auth.service';
     MatListModule,
   ],
   template: `
-    <mat-toolbar color="primary" *ngIf="isAuthenticated()" class="navbar">
-  <span class="left">
-    <img class="logo-img" src="assets/img/logo.png" alt="Logo" />
-  </span>
+   <mat-toolbar
+      color="primary"
+      *ngIf="isAuthenticated()"
+      class="navbar"
+      [ngStyle]="{ left: sidebarOpen ? '250px' : '0', width: sidebarOpen ? 'calc(100% - 250px)' : '100%' }"
+    >
+      <button mat-icon-button (click)="toggleSidebar()" class="menu-toggle">
+        <mat-icon>menu</mat-icon>
+      </button>
 
-  <span class="spacer desktop-only"></span>
+      <span class="spacer"></span>
 
-  <div class="menu desktop-only">
-    <button mat-button routerLink="/dashboard">Dashboard</button>
-    <button mat-button routerLink="/cases/1">Report Bugs</button>
-    <button mat-button routerLink="/features">Settings</button>
-  </div>
+      <div class="actions">
+        <button mat-icon-button class="dark-toggle" (click)="toggleDarkMode()">
+          <mat-icon>{{ darkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+        </button>
+        <button mat-button class="logout" (click)="logout()">Sair</button>
+      </div>
+    </mat-toolbar>
+    <div class="wrapper">
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+      #sidenav
+      mode="side"
+      [opened]="sidebarOpen"
+      class="sidenav"
+      fixedInViewport="true"
+    >
+      <div class="logo">
+        <a mat-list-item routerLink="/dashboard">
+          <span>PetalFlow</span>
+        </a>
+      </div>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/dashboard" routerLinkActive="active">
+          <mat-icon>rocket</mat-icon>
+          <span>Home</span>
+        </a>
+        <a mat-list-item routerLink="/cases/1" routerLinkActive="active">
+          <mat-icon>bug_report</mat-icon>
+          <span>Report Bugs</span>
+        </a>
+        <a mat-list-item routerLink="/dashboard" routerLinkActive="active">
+          <mat-icon>dashboard</mat-icon>
+          <span>Dashboard</span>
+        </a>
+        <a mat-list-item routerLink="/features" routerLinkActive="active">
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
 
-  <span class="spacer desktop-only"></span>
+    <mat-sidenav-content class="content">
+      <mat-toolbar
+        color="primary"
+        class="navbar"
+        [ngStyle]="{
+          left: sidebarOpen ? '250px' : '0',
+          width: sidebarOpen ? 'calc(100% - 250px)' : '100%'
+        }"
+      >
+        <button mat-icon-button (click)="toggleSidebar()" class="menu-toggle">
+          <mat-icon>menu</mat-icon>
+        </button>
 
-  <div class="actions desktop-only">
-    <button mat-icon-button class="dark-toggle" (click)="toggleDarkMode()">
-      <mat-icon>{{ darkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
-    </button>
-    <button mat-button class="logout" (click)="logout()">Sair</button>
-  </div>
+        <span class="spacer"></span>
 
-  <button mat-icon-button class="mobile-toggle" (click)="toggleMobileMenu()">
-    <mat-icon>menu</mat-icon>
-  </button>
-</mat-toolbar>
+        <div class="actions">
+          <button mat-icon-button class="dark-toggle" (click)="toggleDarkMode()">
+            <mat-icon>{{ darkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+          </button>
+          <button mat-button class="logout" (click)="logout()">Sair</button>
+        </div>
+      </mat-toolbar>
 
-<div class="mobile-menu" [class.open]="isMenuOpen" *ngIf="mobileMenuOpen">
-  <button mat-button routerLink="/dashboard">Dashboard</button>
-  <button mat-button routerLink="/cases/1">Report Bugs</button>
-  <button mat-button routerLink="/features">Settings</button>
-  <button mat-button (click)="toggleDarkMode()">
-    <mat-icon>{{ darkMode ? 'light_mode' : 'dark_mode' }}</mat-icon> Modo
-  </button>
-  <button mat-button (click)="logout()">Sair</button>
+      <div class="router-content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
-
-<div class="content">
-  <router-outlet></router-outlet>
-</div>
-
   `,
   styleUrls: ['./main-layout.component.scss']
 })
@@ -69,6 +110,7 @@ export class MainLayoutComponent {
   darkMode = false;
   isMenuOpen = false;
   mobileMenuOpen = false;
+  sidebarOpen = true;
 
   constructor(private authService: AuthService) {}
 
@@ -88,7 +130,10 @@ export class MainLayoutComponent {
   toggleMobileMenu() {
     this.mobileMenuOpen = !this.mobileMenuOpen;
     this.isMenuOpen = !this.isMenuOpen;
+  }
 
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
   }
 
 }

@@ -8,11 +8,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatAccordion} from '@angular/material/expansion';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { GherkinPipe } from '../../pipes/gherkin.pipe';
-
+import {TooltipPosition, MatTooltipModule} from '@angular/material/tooltip';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateCaseDialogComponent } from './create-case-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-cases',
@@ -26,6 +27,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
     MatExpansionModule,
     MatFormFieldModule,
     GherkinPipe,
+    MatTooltipModule,
     MatDialogModule,
     MatPaginator
 
@@ -143,6 +145,7 @@ export class CasesComponent implements OnInit {
       }
     });
   }
-  
+  positionOptions: TooltipPosition[] = ['above'];
+  position = new FormControl(this.positionOptions[0]);
 }
 

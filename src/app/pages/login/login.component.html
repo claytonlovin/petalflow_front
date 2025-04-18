@@ -1,19 +1,19 @@
 <div class="login-container">
   <mat-card class="login-card">
     <mat-card-header class="login-header">
-      <img src="assets/img/logo.png" alt="Logo" class="logo" />
+      <!-- <img src="assets/img/logo.png" alt="Logo" class="logo" /> -->
     </mat-card-header>
 
     <mat-card-content>
+      <h1 class="title">Bem-vindo(a) de volta</h1>
       <p class="subtitle">Entre com sua conta para continuar</p>
-
       <form (ngSubmit)="onSubmit()" class="login-form">
-        <mat-form-field appearance="fill" class="full-width">
+        <mat-form-field appearance="outline" class="full-width">
           <mat-label>Email</mat-label>
           <input matInput type="email" [(ngModel)]="email" name="email" required />
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="full-width">
+        <mat-form-field appearance="outline" class="full-width">
           <mat-label>Senha</mat-label>
           <input matInput type="password" [(ngModel)]="password" name="password" required />
         </mat-form-field>
