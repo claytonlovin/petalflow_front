@@ -1,14 +1,12 @@
 <div class="container">
 
   <div class="header">
-    <mat-card-title class="title">List projects</mat-card-title>
+    <mat-card-title class="title">Home</mat-card-title>
 
     <button  (click)="openCreateDialog()" class="case-button" >
-      Create New Project
+      Criar projeto
     </button> 
   </div>
-  
-
     <mat-card class="product-card"  [ngClass]="{
       'pass': statusMap[product.id] === 'PASS',
       'fail': statusMap[product.id] === 'FAIL',

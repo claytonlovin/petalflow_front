@@ -8,20 +8,20 @@ export class NotificationService {
     private config: MatSnackBarConfig = {
         duration: 4000,
         horizontalPosition: 'end',
-        verticalPosition: 'bottom',
+        verticalPosition: 'top',
     };
 
     constructor(private snackBar: MatSnackBar) {}
 
     showErrorMessage(message: string): void {
-        this.snackBar.open(`❌ ${message}`, 'Fechar', {
+        this.snackBar.open(`${message}`, 'Fechar', {
             ...this.config,
             panelClass: ['error-snackbar']
         });
     }
 
     showSuccessMessage(message: string): void {
-        this.snackBar.open(`✅ ${message}`, 'Fechar', {
+        this.snackBar.open(`${message}`, 'Fechar', {
             ...this.config,
             panelClass: ['success-snackbar']
         });

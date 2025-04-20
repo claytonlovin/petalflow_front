@@ -1,0 +1,84 @@
+// INTEGRATION
+* {
+  color: var(--text-color);
+}
+.integration-cards {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.integration-card {
+  background-color: var(--bg-color);
+  border: 1px solid #efefef;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1 1 calc(33.333% - 16px);
+  min-width: 250px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  mat-card-title{
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: 500;
+  }
+  p{
+    color: var(--text-color);
+    font-size: 14px;
+  }
+}
+
+.integration-logo {
+  width: 60px;
+  height: auto;
+  margin: 16px auto;
+}
+
+// TOKEN
+.token-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+
+  .token-generator,
+  .token-docs {
+    flex: 1 1 45%;
+  }
+
+  .generated-token {
+    margin-top: 16px;
+
+    .token-field {
+      width: 100%;
+    }
+  }
+
+  pre {
+    background: var(--bg-code);
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 13px;
+  }
+
+}
+.token-card{
+  background-color: var(--bg-color) !important;
+}
+.cypress-logo img{
+  width: 100% !important;
+  height: auto !important;
+}
+@media screen and (max-width: 768px) {
+  .token-container {
+    display: block;
+  }
+  
+}

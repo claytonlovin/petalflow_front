@@ -1,0 +1,104 @@
+<mat-tab-group>
+    <mat-tab label="Integração" class="container"> 
+      <!-- This tab contains a card for integration settings -->
+      <div class="integration-cards">
+        <mat-card class="integration-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original-wordmark.svg" alt="GitHub" class="integration-logo" />
+          <mat-card-title>GitHub</mat-card-title>
+          <mat-card-content>
+            <p>Integre com repositórios GitHub.</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button class="case-button">Configurar</button>
+          </mat-card-actions>
+        </mat-card>
+      
+        <mat-card class="integration-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuredevops/azuredevops-original.svg" alt="Azure DevOps" class="integration-logo" />
+          <mat-card-title>Azure DevOps</mat-card-title>
+          <mat-card-content>
+            <p>Conecte seu Azure DevOps.</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button class="case-button">Configurar</button>
+          </mat-card-actions>
+        </mat-card>
+      
+        <mat-card class="integration-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jira/jira-original.svg" alt="Jira" class="integration-logo" />
+          <mat-card-title>Jira</mat-card-title>
+          <mat-card-content>
+            <p>Configure a integração com o Jira.</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button class="case-button">Configurar</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+
+    </mat-tab>
+    <mat-tab label="Token">
+      <div class="token-container">
+        <!-- Lado esquerdo: geração do token -->
+        <div class="token-generator">
+          <h3>Gerar novo Token</h3>
+          <p>Os tokens gerados serão usados para autenticação nas suas automações. O token possui acesso
+            permanente e não expira. Você pode revogar o token a qualquer momento. Após gerar o token, copie-o e armazene-o em um local seguro. Não será possível visualizar o token novamente.</p>
+          <p>Se você perder o token, será necessário gerar um novo.</p>
+          <p>O token gerado é único e deve ser tratado como uma senha. Não compartilhe o token com ninguém.</p>    
+          
+          
+          <!-- Se ainda não há token -->
+          <!-- Botão "Gerar Token" só aparece se NÃO tiver token -->
+              <button mat-raised-button 
+              class="case-button" 
+              (click)="generateToken()"
+              *ngIf="!generatedToken"
+              [disabled]="isButtonDisabled">
+              Gerar Token
+              </button>
+
+              <!-- Mostra o token se já foi gerado -->
+              <div *ngIf="generatedToken" class="generated-token">
+              <label>Token gerado:</label>
+              <mat-form-field appearance="outline" class="token-field">
+              <input matInput [value]="generatedToken" readonly />
+              <button mat-icon-button matSuffix (click)="copyToken()" aria-label="Copiar">
+              <mat-icon>content_copy</mat-icon>
+              </button>
+              </mat-form-field>
+              <button mat-button class="case-button-delete" (click)="deleteToken()">Revogar Token</button>
+            </div>
+
+
+
+        </div>
+    
+        <!-- Lado direito: documentação -->
+        <div class="token-docs">
+          <h2>Saiba como usar o Token</h2>
+          <p>Assista ao vídeo abaixo para aprender como utilizar o token nas suas automações:</p>
+
+          <div class="video-container">
+            <iframe width="100%" height="400"
+              src="https://www.youtube.com/embed/SEU_VIDEO_ID"
+              title="Como usar o Token"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          
+        </div>
+      </div>
+    </mat-tab>
+    
+    <!-- Lado direito: documentação -->
+    
+    <mat-tab label="Pagamento"> 
+      <div class="payment-container">
+        <p>Em desenvolvimento</p>
+      </div>  
+    </mat-tab>
+  </mat-tab-group>
+  

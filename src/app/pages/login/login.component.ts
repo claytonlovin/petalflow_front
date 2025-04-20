@@ -45,7 +45,7 @@ export class LoginComponent {
   onSubmit() {
     this.authService.login(this.email, this.password).subscribe({
       next: (response: any) => {
-        this.authService.saveToken(response.token);
+        this.authService.saveToken(response.token, response.id_user, response.email);
         this.router.navigate(['/dashboard']);
       },
       error: (error: any) => {

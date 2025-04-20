@@ -50,7 +50,7 @@
   width: 100%;
 }
 
-.sidenav {
+.sidenav{
   width: 250px;
   background-color: var(--sidebar-bg-color);
   color: var(--sidebar-text-color);
@@ -65,8 +65,9 @@
 .content{
   background-color: var(--bgd-color);
 }
-@media (max-width: 768px) {
+@media(max-width: 768px) {
   .sidenav {
     width: 200px;
   }
+
 }

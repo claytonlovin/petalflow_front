@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { AuthService } from '../services/auth.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-main-layout',
@@ -63,11 +64,7 @@ import { AuthService } from '../services/auth.service';
           <mat-icon>bug_report</mat-icon>
           <span>Report Bugs</span>
         </a>
-        <a mat-list-item routerLink="/dashboard" routerLinkActive="active">
-          <mat-icon>dashboard</mat-icon>
-          <span>Dashboard</span>
-        </a>
-        <a mat-list-item routerLink="/features" routerLinkActive="active">
+        <a mat-list-item routerLink="/settings" routerLinkActive="active">
           <mat-icon>settings</mat-icon>
           <span>Settings</span>
         </a>
@@ -112,13 +109,22 @@ export class MainLayoutComponent {
   mobileMenuOpen = false;
   sidebarOpen = true;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private breakpointObserver: BreakpointObserver) {}
 
   toggleDarkMode() {
     this.darkMode = !this.darkMode;
     document.body.classList.toggle('dark-theme', this.darkMode);
   }
-
+  ngOnInit() {
+    this.breakpointObserver.observe([
+      '(max-width: 768px)']).subscribe(result => {
+      if (result.matches) {
+        this.sidebarOpen = !this.sidebarOpen;
+      }else{
+        this.sidebarOpen = true;
+      }
+    });
+  }
   isAuthenticated(): boolean {
     return this.authService.isAuthenticated();
   }

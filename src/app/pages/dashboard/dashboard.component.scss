@@ -15,6 +15,7 @@
   .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 70%;
     max-width: 900px !important;
     margin-bottom: 15px;
@@ -56,19 +57,17 @@
     margin: 0 auto;
     border: 1px solid transparent;
     transition: border-color 0.3s ease;
-    animation: fadeIn 0.5s ease-in-out;
- 
-
+  
     &.pass { 
-      border: 3px solid #06d6a0;
+      border: 1px solid #06d6a0;
     }
   
     &.fail {
-      border: 3px solid #ef476f;
+      border: 1px solid #ef476f;
     }
 
     &.not_executed{
-      border-color: #9c9c9cad
+      border: 0.5px solid #e2e2e2ad
     }
 
   }
@@ -114,6 +113,7 @@
   .header {
     flex-direction: row;
     align-items: center;
+
     gap: 1rem;
     width: 90%;
   }
@@ -134,6 +134,7 @@
   .product-content {
     flex-direction: column;
     align-items: flex-start;
+    width: 90%;
     gap: 1rem;
   }
 

@@ -12,7 +12,6 @@ mat-expansion-panel {
   border: 1px solid var(--border-case);
 }
 
-/* Título e descrição dentro do painel */
 mat-panel-title, mat-panel-description  {
   color: var(--text-color) !important;
 }
@@ -97,15 +96,15 @@ mat-icon{
 }
 
 .pass {
-  background-color: #4caf50; // verde
+  background-color: #4caf50; 
 }
 
 .fail {
-  background-color: #f44336; // vermelho
+  background-color: #f44336; 
 }
 
 .not_executed {
-  background-color: #9e9e9e; // cinza
+  background-color: #9e9e9e; 
 }
 
 
@@ -138,3 +137,18 @@ mat-icon{
   color: green;
 }
 
+
+/* mobile first */
+@media screen and (max-width: 768px) {
+  .cases-container{
+    width: 95%;
+    padding: 2px ;
+  }
+  .mat-panel-title, mat-panel-description {
+    font-size: 12px !important;
+  }
+  .case-info{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -27,7 +27,12 @@ export const routes: Routes = [
       {
         path: 'products/edit/:id_product',
         loadComponent: () => import('./pages/products/edit-product/edit-product.component').then(m => m.EditProductComponent)
+      },
+      {
+        path: 'settings',
+        loadComponent: () => import('./pages/settings/settings.component').then(m => m.SettingsComponent)
       }
+      
     ]
   },
   { path: '**', redirectTo: '/login' }

@@ -3,11 +3,10 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #ffffff, #cfdef3, #ffffff);
+    background: linear-gradient(135deg, #ffffff, #cfdef3);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
   }
-   
   .register-card {
     width: 100%;
     max-width: 800px;
@@ -83,6 +82,7 @@
     text-align: center;
     margin-top: 1.2rem;
     width: 100%;
+    cursor: pointer;
   }
   
   .back-login {
@@ -114,3 +114,20 @@
     }
   }
   
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .register-container {
+      padding: 1rem;
+    }
+    .register-card {
+      padding: 1.5rem;
+    }
+  
+    .half-width {
+      width: 100%;
+    }
+  
+    .register-button {
+      padding: 0.5rem;
+    }
+  }

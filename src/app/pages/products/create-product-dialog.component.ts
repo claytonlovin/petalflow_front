@@ -7,7 +7,9 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatDialogModule } from '@angular/material/dialog'; // ✅ IMPORTANDO AQUI
+import { NotificationService } from '../../services/notification.service';
+
+import { MatDialogModule } from '@angular/material/dialog'; 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
@@ -34,12 +36,13 @@ export class CreateProductDialogComponent {
   constructor(
     private dialogRef: MatDialogRef<CreateProductDialogComponent>,
     private productService: ProductService,
-    private snackBar: MatSnackBar 
+    private snackBar: MatSnackBar ,
+    private notificationService: NotificationService
   ) {}
 
   createProduct() {
     if (!this.name.trim()) {
-      this.showNotification('O nome do produto é obrigatório!', 'error');
+      this.notificationService.showErrorMessage('Nome do produto é obrigatório.');
       return;
     }
 
@@ -52,12 +55,12 @@ export class CreateProductDialogComponent {
 
     this.productService.createProduct(productData).subscribe({
       next: () => {
-        this.showNotification('Produto criado com sucesso!', 'success');
+       this.notificationService.showSuccessMessage('Produto criado com sucesso!');
         this.dialogRef.close(true);
       },
       error: (err) => {
+        this.notificationService.showErrorMessage('Erro ao criar produto.');
         console.error('Erro ao criar produto:', err);
-        this.showNotification('Erro ao criar produto!', 'error');
       }
     });
   }
@@ -66,10 +69,5 @@ export class CreateProductDialogComponent {
     this.dialogRef.close(false);
   }
 
-  showNotification(message: string, type: 'success' | 'error') {
-    this.snackBar.open(message, 'Fechar', {
-      duration: 3000,
-      panelClass: type === 'success' ? 'success-snackbar' : 'error-snackbar'
-    });
-  }
+
 }

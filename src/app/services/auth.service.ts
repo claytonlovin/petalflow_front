@@ -19,8 +19,11 @@ export class AuthService {
     
   }
 
-  saveToken(token: string) {
+  saveToken(token: string, id_user: number, email: string) {
+    localStorage.setItem('id_user', id_user.toString());
+    localStorage.setItem('email', email);
     localStorage.setItem('access_token', token);
+
   }
 
   getToken(): string | null {

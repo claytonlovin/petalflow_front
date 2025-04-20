@@ -54,5 +54,10 @@ export class RegisterComponent {
           },
         });     
       }
-    }
+  onLogin() {
+    this.router.navigate(['/login']);
+  
+  }
+}
+
   
