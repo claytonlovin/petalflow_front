@@ -35,8 +35,8 @@ export class CaseService {
     return this.http.put(`${this.apiUrl + '/cases'}/${id_case}`, caseData, { headers });
   }
 
-  executTestCase(id_caseteste:number, id_feature: number, id_product: number) {
-    const body = { id_caseteste, id_feature, id_product };
+  executTestCase(id_caseTest:number, id_feature: number, id_product: number) {
+    const body = { id_caseTest, id_feature, id_product };
     const token = localStorage.getItem('access_token') || '';
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 

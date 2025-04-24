@@ -11,6 +11,9 @@
       <mat-expansion-panel *ngFor="let caseItem of pagedCases">
       <mat-expansion-panel-header>
         <mat-panel-title>
+          <span class="case-id">{{ caseItem.code }}</span>
+        </mat-panel-title>
+        <mat-panel-title>
           {{ caseItem.feature.name_feature }}
         </mat-panel-title>
           <mat-panel-description>Criticality

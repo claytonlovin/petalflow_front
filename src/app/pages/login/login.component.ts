@@ -9,12 +9,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatIcon } from '@angular/material/icon';
+import { NotificationService } from '../../services/notification.service';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-
-@Component({
+ @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
@@ -39,7 +39,8 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private notificationService: NotificationService
   ) {}
 
   onSubmit() {
@@ -51,17 +52,12 @@ export class LoginComponent {
       error: (error: any) => {
         console.error('Erro de login', error);
         this.loginError = true;  
-        this.showErrorMessage("Usuário ou senha inválidos!");
+        this.notificationService.showErrorMessage('Erro ao fazer login');
       }
     });
   }
 
-  showErrorMessage(message: string) {
-    this.snackBar.open(message, 'Fechar', {
-      duration: 3000, 
-      panelClass: ['error-snackbar']  
-    });
-  }
+  
   goToRegister() {
     this.router.navigate(['/register']);
   }
