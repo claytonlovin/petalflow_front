@@ -60,12 +60,15 @@
     
   </mat-accordion>
 
-    <mat-paginator
-            [length]="cases.length"
-            [pageSize]="pageSize"
-            [pageSizeOptions]="[5, 10, 20]"
-            (page)="handlePageEvent($event)">
-    </mat-paginator>
+  <mat-paginator
+    [length]="cases.length"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    [pageSizeOptions]="[5, 10, 20]"
+    (page)="handlePageEvent($event)">
+  </mat-paginator>
+
+
 
 
 </div>

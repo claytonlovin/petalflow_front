@@ -9,6 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-create-case-dialog',
@@ -34,6 +35,7 @@ export class CreateCaseDialogComponent implements OnInit {
   criticality = 'AVERAGE';
   functionType = 'READ';
   result = 'NOT_EXECUTED';
+  code = '';
 
   @Input() caseToEdit?: any;
 
@@ -41,6 +43,7 @@ export class CreateCaseDialogComponent implements OnInit {
     private dialogRef: MatDialogRef<CreateCaseDialogComponent>,
     private caseService: CaseService,
     private featureService: FeatureService,
+    private notificationService: NotificationService,
     @Inject(MAT_DIALOG_DATA) public data?: { id_product: number; id_feature?: number,
     }
   ) {}
@@ -57,7 +60,7 @@ export class CreateCaseDialogComponent implements OnInit {
       this.functionType = this.caseToEdit.function;
       this.result = this.caseToEdit.result;
       this.selectedFeatureId = this.caseToEdit.id_feature;
-
+      this.code = this.caseToEdit.code;
       if (this.id_product ) {
         this.loadFeatures(() => {
           this.selectedFeatureId = this.caseToEdit.id_feature;
@@ -74,8 +77,9 @@ export class CreateCaseDialogComponent implements OnInit {
     error: () => alert('Erro ao carregar features')
   });
 }
+
   createCase(): void {
-    const caseData = {
+    const caseData: any = {
       id_feature: this.selectedFeatureId,
       id_product: this.id_product,
       action: this.action,
@@ -84,15 +88,20 @@ export class CreateCaseDialogComponent implements OnInit {
       function: this.functionType,
       result: this.result,
       dataExec: null
-    };
-
+        };
+    if (this.caseToEdit) {
+      caseData.code = this.caseToEdit.code;
+    }
     const request$ = this.caseToEdit
-      ? this.caseService.updateCase(this.caseToEdit.id_caseteste, caseData)
+      ? this.caseService.updateCase(this.caseToEdit.id_caseTest, caseData)
       : this.caseService.createCase(caseData);
 
     request$.subscribe({
-      next: () => this.dialogRef.close(true),
-      error: (err) => alert('Erro ao salvar case: ' + (err.error?.detail || err.message))
+      next: () => {
+        this.notificationService.showSuccessMessage('Case salvo com sucesso!');
+        this.dialogRef.close(true); 
+      },
+      error: (err) => this.notificationService.showErrorMessage('Erro ao salvar case: ' + err),
     });
   }
 

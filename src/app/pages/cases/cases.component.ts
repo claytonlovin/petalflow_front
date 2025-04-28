@@ -14,6 +14,7 @@ import { CreateCaseDialogComponent } from './create-case-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-cases',
@@ -56,7 +57,6 @@ export class CasesComponent implements OnInit {
     this.id_product = Number(this.route.snapshot.paramMap.get('id_product'));
     this.loadCases();
   }
-
   ngAfterViewInit() {
     if (this.cases.length > 0) {
       setTimeout(() => {
@@ -68,20 +68,21 @@ export class CasesComponent implements OnInit {
   }
 
   loadCases(): void {
-    this.caseService.getCasesByProduct(this.id_product).subscribe({
+    this.caseService.getCasesByProduct(this.id_product, { skip: 0, limit: 1000 }).subscribe({
       next: (data) => {
         this.cases = data;
-        console.log(data);
         this.pageIndex = 0;
+        this.pageSize = 10;
         this.updatePagedCases();
+        if (this.paginator) {
+          this.paginator.firstPage();
+        }
         this.changeDetectorRef.detectChanges();
       },
       error: (err) => {
         console.error('Erro ao carregar os cases:', err);
       }
     });
-    this.updatePagedCases();
-
   }
 
   openCreateCaseDialog(): void {
@@ -106,6 +107,7 @@ export class CasesComponent implements OnInit {
       data: {
         id_product: this.id_product,
         id_feature: caseItem.id_feature,
+        code : caseItem.code,
       }
     });
 
@@ -121,7 +123,7 @@ export class CasesComponent implements OnInit {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.updatePagedCases();
-  }
+  }  
 
   updatePagedCases() {
     const startIndex = this.pageIndex * this.pageSize;

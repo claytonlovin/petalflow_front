@@ -85,8 +85,9 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
         </button>
 
         <span class="spacer"></span>
-
+        
         <div class="actions">
+        
           <button mat-icon-button class="dark-toggle" (click)="toggleDarkMode()">
             <mat-icon>{{ darkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
           </button>

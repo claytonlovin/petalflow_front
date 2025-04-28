@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environments';
  
@@ -12,14 +12,25 @@ export class CaseService {
 
   constructor(private http: HttpClient) {}
 
-  getCasesByProduct(id_product: number): Observable<any> {
+  getCasesByProduct(id_product: number, params?: { skip?: number, limit?: number }): Observable<any> {
     const token = localStorage.getItem('access_token') || '';
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
-
-    return this.http.get(`${this.apiUrl + '/cases'}/${id_product}`, { headers });
+  
+    let httpParams = new HttpParams();
+    if (params) {
+      if (params.skip !== undefined) {
+        httpParams = httpParams.set('skip', params.skip.toString());
+      }
+      if (params.limit !== undefined) {
+        httpParams = httpParams.set('limit', params.limit.toString());
+      }
+    }
+  
+    return this.http.get(`${this.apiUrl + '/cases'}/${id_product}`, { headers, params: httpParams });
   }
+  
   
   createCase(caseData: any) {
     const token = localStorage.getItem('access_token');

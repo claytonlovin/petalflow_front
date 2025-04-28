@@ -207,3 +207,14 @@ mat-icon{
 .mat-mdc-tab-body-wrapper{
   padding: 10px 20px !important
 }
+
+
+
+.mat-mdc-table{
+  background-color: var(--bg-color) !important;
+  color: var(--text-color);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #bdbdbd !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
